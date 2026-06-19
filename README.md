@@ -48,7 +48,7 @@ https://www.youtube.com/watch?v=hAAXLuZPnJQ
 
 Discord Server:
 
-discord.gg/7K7G5vswuF
+https://discord.gg/7K7G5vswuF
 
 ---
 
