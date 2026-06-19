@@ -34,11 +34,9 @@ index.html
 
 ### Preview 1
 
-![Preview 1](IMAGE_LINK_1)
-
-### Preview 2
-
-![Preview 2](IMAGE_LINK_2)
+<img width="1920" height="951" alt="Image" src="https://github.com/user-attachments/assets/6ee5ad9e-9172-4251-a264-fb4c56d53a3c" />
+<img width="1920" height="951" alt="Image" src="https://github.com/user-attachments/assets/513e65c1-3a73-4837-be9a-7501fe321591" />
+<img width="1920" height="953" alt="Image" src="https://github.com/user-attachments/assets/b3420d07-427a-4e77-bc5d-5495169e0c87" />
 
 ## 🎥 Video Showcase
 
