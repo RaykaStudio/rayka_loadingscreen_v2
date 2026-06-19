@@ -32,7 +32,7 @@ index.html
 
 ## 📸 Preview Images
 
-### Preview 1
+### Preview
 
 <img width="1920" height="951" alt="Image" src="https://github.com/user-attachments/assets/6ee5ad9e-9172-4251-a264-fb4c56d53a3c" />
 <img width="1920" height="951" alt="Image" src="https://github.com/user-attachments/assets/513e65c1-3a73-4837-be9a-7501fe321591" />
