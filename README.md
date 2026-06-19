@@ -48,7 +48,7 @@ VIDEO_LINK
 
 Discord Server:
 
-DISCORD_LINK
+discord.gg/7K7G5vswuF
 
 ---
 
