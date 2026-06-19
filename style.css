@@ -1,0 +1,878 @@
+:root {
+    --bg-main: #020406;
+    --panel-bg: #131313a1;
+    --panel-expanded: #131313a1;
+    --text-main: #ffffff;
+    --text-muted: rgba(255, 255, 255, 0.45);
+    --text-subtle: rgba(255, 255, 255, 0.25);
+    --border-subtle: rgba(255, 255, 255, 0.08);
+    --glass-specular: rgba(255, 255, 255, 0.22);
+    --overlay-color: #5c6eb69d;
+    --overlay-opacity: 0.55;
+    --accent-color: #acd0d4;
+    --accent-glow: #b5dde28c
+}
+
+[data-theme="light"] {
+    --bg-main: #e2e2e2;
+    --panel-bg: #cacaca;
+    --panel-expanded: #cacaca;
+    --text-main: #0F172A;
+    --text-muted: rgba(15, 23, 42, 0.65);
+    --text-subtle: rgba(15, 23, 42, 0.4);
+    --border-subtle: rgba(15, 23, 42, 0.09);
+    --glass-specular: rgba(15, 23, 42, 0.15);
+    --overlay-color: #6271ad9d;
+    --overlay-opacity: 0.55
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Space Grotesk', sans-serif;
+    user-select: none
+}
+
+body {
+    background-color: var(--bg-main);
+    color: var(--text-main);
+    width: 100vw;
+    height: 100vh;
+    overflow: hidden;
+    position: relative;
+    transition: background-color 0.5s cubic-bezier(0.25, 1, 0.2, 1)
+}
+
+.rayka-watermelon-sky,
+.rayka-banana-juice,
+.rayka-shadow-pizza {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    pointer-events: none
+}
+
+.rayka-watermelon-sky {
+    z-index: -2;
+    overflow: hidden
+}
+
+.rayka-banana-juice {
+    background-size: cover;
+    background-position: center;
+    opacity: 0;
+    transform: scale(1.05);
+    transition: opacity 1.5s ease-in-out, transform 6s ease-out
+}
+
+.rayka-banana-juice.active {
+    opacity: 1;
+    transform: scale(1)
+}
+
+[data-theme="light"] .rayka-watermelon-sky {
+    filter: brightness(1.1) saturate(110%)
+}
+
+.rayka-shadow-pizza {
+    background-color: var(--overlay-color);
+    opacity: var(--overlay-opacity);
+    z-index: -1;
+    transition: background-color 0.5s, opacity 0.5s
+}
+
+.rayka-joystick-pad {
+    width: 20px;
+    height: 20px;
+    background: rgba(255, 255, 255, 0.2);
+    border: 2px solid var(--accent-color, #007aff);
+    border-radius: 50%;
+    position: fixed;
+    transform: translate(-50% -50%);
+    pointer-events: none;
+    z-index: 999999;
+    transition: all 0.2s;
+    box-shadow: 0 0 10px var(--accent-glow)
+}
+
+.rayka-joystick-pad.hovered {
+    width: 32px;
+    height: 32px;
+    background: rgba(255, 255, 255, 0.4);
+    border-color: #fff;
+    box-shadow: 0 0 15px #fff
+}
+
+.rayka-helicopter-airport,
+.rayka-monkey-zoo {
+    position: absolute;
+    top: 30px;
+    display: flex;
+    align-items: center;
+    height: 48px;
+    z-index: 100
+}
+
+.rayka-helicopter-airport {
+    left: 45px;
+    gap: 12px
+}
+
+.rayka-burger-king,
+.rayka-monkey-zoo,
+.rayka-bicycle-road,
+.rayka-guitar-string {
+    background: var(--panel-bg);
+    backdrop-filter: blur(30px) saturate(160%);
+    -webkit-backdrop-filter: blur(30px) saturate(160%);
+    border-radius: 24px;
+    border: 1px solid var(--border-subtle);
+    box-shadow: 0 12px 30px rgba(0, 0, 0, 0.15);
+    transition: all 0.5s cubic-bezier(0.25, 1, 0.2, 1)
+}
+
+.rayka-burger-king {
+    display: flex;
+    align-items: center;
+    height: 48px;
+    padding: 6px 22px 6px 8px
+}
+
+.rayka-tomato-sauce {
+    display: flex;
+    align-items: center;
+    justify-content: center
+}
+
+.rayka-potato-fries {
+    width: 34px;
+    height: 34px;
+    border-radius: 50%;
+    object-fit: cover
+}
+
+.rayka-cucumber-salad {
+    display: flex;
+    flex-direction: column;
+    margin-left: 12px
+}
+
+.rayka-onion-ring {
+    font-size: 0.65rem;
+    color: var(--text-muted)
+}
+
+.rayka-garlic-bread {
+    font-size: 0.95rem;
+    font-weight: 600;
+    letter-spacing: -0.2px;
+    margin-top: -2px
+}
+
+.rayka-cheese-burger {
+    width: 48px;
+    height: 48px;
+    border-radius: 50%;
+    background: var(--panel-bg);
+    backdrop-filter: blur(30px);
+    border: 1px solid var(--border-subtle);
+    color: var(--text-main);
+    font-size: 1.05rem;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 12px 30px rgba(0, 0, 0, 0.15);
+    transition: all 0.3s
+}
+
+.rayka-cheese-burger:hover {
+    transform: scale(1.06)
+}
+
+.rayka-cheese-burger:active {
+    transform: scale(0.94)
+}
+
+.rayka-monkey-zoo {
+    right: 45px;
+    justify-content: flex-end;
+    width: 48px;
+    overflow: visible;
+    padding: 0
+}
+
+.rayka-monkey-zoo.expanded {
+    width: 295px;
+    padding-left: 12px
+}
+
+.rayka-lion-cage {
+    width: 46px;
+    height: 46px;
+    min-width: 46px;
+    border-radius: 50%;
+    background: transparent;
+    border: none;
+    color: var(--text-main);
+    font-size: 1.05rem;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 5;
+    transition: transform 0.3s
+}
+
+.rayka-monkey-zoo.expanded .rayka-lion-cage {
+    transform: rotate(-45deg)
+}
+
+.rayka-zebra-stripe {
+    width: 1px;
+    height: 20px;
+    background: var(--glass-specular);
+    margin-right: 4px;
+    opacity: 0;
+    transition: opacity 0.3s
+}
+
+.rayka-monkey-zoo.expanded .rayka-zebra-stripe {
+    opacity: 1
+}
+
+.rayka-donkey-farm {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    width: 0;
+    opacity: 0;
+    pointer-events: none;
+    overflow: hidden;
+    transition: opacity 0.25s, width 0.45s
+}
+
+.rayka-monkey-zoo.expanded .rayka-donkey-farm {
+    width: 100%;
+    opacity: 1;
+    pointer-events: auto;
+    overflow: visible
+}
+
+.rayka-horse-riding {
+    color: var(--text-main);
+    opacity: 0.4;
+    font-size: 1.1rem;
+    text-decoration: none;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    width: 26px;
+    height: 26px;
+    transition: all 0.2s
+}
+
+.rayka-horse-riding:hover {
+    opacity: 1;
+    transform: scale(1.1);
+    color: var(--accent-color)
+}
+
+.rayka-horse-riding::after {
+    content: attr(data-title);
+    position: absolute;
+    top: 38px;
+    left: 50%;
+    transform: translateX(-50%) translateY(-6px);
+    background: rgba(11, 16, 24, 0.95);
+    color: #fff;
+    font-size: 0.58rem;
+    font-weight: 700;
+    letter-spacing: 0.5px;
+    padding: 4px 8px;
+    border-radius: 6px;
+    white-space: nowrap;
+    opacity: 0;
+    pointer-events: none;
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+    transition: all 0.2s
+}
+
+[data-theme="light"] .rayka-horse-riding::after {
+    background: rgba(255, 255, 255, 0.98);
+    color: #0F172A;
+    border: 1px solid rgba(15, 23, 42, 0.08);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1)
+}
+
+.rayka-horse-riding:hover::after {
+    opacity: 1;
+    transform: translateX(-50%) translateY(0)
+}
+
+.rayka-bicycle-road {
+    position: absolute;
+    bottom: 40px;
+    left: 45px;
+    width: 365px;
+    height: 72px;
+    border-radius: 20px;
+    overflow: hidden;
+    box-shadow: 0 20px 45px rgba(0, 0, 0, 0.4);
+    transition: height 0.7s cubic-bezier(0.25, 1, 0.2, 1), background 0.5s, box-shadow 0.7s
+}
+
+.rayka-bicycle-road.expanded {
+    height: 540px;
+    box-shadow: 0 40px 80px rgba(0, 0, 0, 0.55)
+}
+
+.rayka-airplane-pilot {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 14px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    z-index: 50
+}
+
+.rayka-train-station {
+    width: 20px;
+    height: 4px;
+    background: var(--glass-specular);
+    border-radius: 2px;
+    transition: all 0.4s
+}
+
+.rayka-airplane-pilot:hover .rayka-train-station {
+    background: var(--text-muted)
+}
+
+.rayka-ship-captain {
+    width: 100%;
+    height: 72px;
+    display: flex;
+    align-items: center;
+    padding: 10px 20px 0 10px;
+    transition: all 0.3s
+}
+
+.rayka-bicycle-road.expanded .rayka-ship-captain {
+    opacity: 0;
+    pointer-events: none;
+    transform: translateY(-15px)
+}
+
+.rayka-rocket-space {
+    margin-top: -13px;
+    width: 54px;
+    height: 54px;
+    border-radius: 12px;
+    object-fit: cover
+}
+
+.rayka-astronaut-suit {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    margin-left: 14px;
+    width: 135px;
+    overflow: hidden
+}
+
+.rayka-alien-ufo {
+    font-size: 0.88rem;
+    font-weight: 500;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis
+}
+
+.rayka-meteor-shower {
+    font-size: 0.72rem;
+    color: var(--text-muted);
+    margin-top: 1px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis
+}
+
+.rayka-telescope-lens {
+    display: flex;
+    align-items: center;
+    gap: 18px;
+    margin-left: auto
+}
+
+.rayka-microscope-slide,
+.rayka-fox-tail {
+    background: transparent;
+    border: none;
+    color: var(--text-muted);
+    cursor: pointer;
+    font-size: 1.1rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: color 0.15s
+}
+
+.rayka-microscope-slide:hover,
+.rayka-fox-tail:hover {
+    color: var(--text-main)
+}
+
+.rayka-microscope-slide.rayka-virus-bacteria {
+    font-size: 1.35rem;
+    color: var(--text-main)
+}
+
+.rayka-dinosaur-egg {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 30px 22px 24px 22px;
+    opacity: 0;
+    pointer-events: none;
+    transform: translateY(30px);
+    transition: opacity 0.3s ease 0.15s, transform 0.55s cubic-bezier(0.25, 1, 0.2, 1) 0.1s
+}
+
+.rayka-bicycle-road.expanded .rayka-dinosaur-egg {
+    opacity: 1;
+    pointer-events: auto;
+    transform: translateY(0)
+}
+
+.rayka-mammoth-fur {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    margin: 10px 0 25px 0
+}
+
+.rayka-eagle-nest {
+    width: 280px;
+    height: 280px;
+    border-radius: 18px;
+    object-fit: cover;
+    box-shadow: 0 20px 45px rgba(0, 0, 0, 0.4)
+}
+
+.rayka-shark-teeth {
+    width: 100%;
+    text-align: left;
+    padding: 0 10px;
+    margin-bottom: 18px
+}
+
+.rayka-whale-tail {
+    font-size: 1.15rem;
+    font-weight: 600;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    letter-spacing: -0.3px
+}
+
+.rayka-dolphin-nose {
+    font-size: 0.85rem;
+    color: var(--text-muted);
+    margin-top: 3px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis
+}
+
+.rayka-octopus-tentacle {
+    width: 100%;
+    padding: 0 10px;
+    margin-bottom: 22px
+}
+
+.rayka-squid-ink {
+    width: 100%;
+    height: 4px;
+    background: var(--border-subtle);
+    border-radius: 2px;
+    cursor: pointer;
+    position: relative
+}
+
+.rayka-shrimp-tail {
+    height: 100%;
+    width: 0%;
+    background: var(--text-main);
+    border-radius: 2px
+}
+
+.rayka-jellyfish-sting {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    margin-top: 8px;
+    font-size: 0.68rem;
+    color: var(--text-subtle);
+    font-weight: 500
+}
+
+.rayka-sea_turtle-island {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+    margin-top: auto;
+    padding: 0 6px
+}
+
+.rayka-penguin-ice {
+    width: 25%
+}
+
+.rayka-polar_bear-snow {
+    background: transparent;
+    border: none;
+    color: var(--text-muted);
+    font-size: 0.95rem;
+    cursor: pointer;
+    transition: all 0.2s
+}
+
+.rayka-polar_bear-snow:hover {
+    color: var(--text-main)
+}
+
+.rayka-polar_bear-snow.liked {
+    color: var(--accent-color) !important;
+    filter: drop-shadow(0 0 8px var(--accent-glow))
+}
+
+.rayka-wolf-pack {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 14px;
+    width: 45%
+}
+
+.rayka-fox-tail {
+    color: var(--text-main);
+    opacity: 0.85;
+    font-size: 1.15rem
+}
+
+.rayka-fox-tail:hover {
+    opacity: 1
+}
+
+.rayka-fox-tail:active {
+    transform: scale(0.9)
+}
+
+.rayka-fox-tail.rayka-deer-horn {
+    font-size: 1.45rem;
+    opacity: 1
+}
+
+.rayka-rabbit-ear {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    gap: 8px;
+    width: 30%;
+    height: 100%;
+}
+
+.rayka-bear-paw {
+    font-size: 0.8rem;
+    color: var(--text-muted);
+    display: flex;
+    align-items: center;
+}
+
+.rayka-squirrel-tail {
+    display: flex;
+    align-items: center;
+    width: 65px;
+}
+
+#asccochi_mouse_trap {
+    -webkit-appearance: none;
+    appearance: none;
+    width: 100%;
+    height: 4px;
+    border-radius: 2px;
+    background: var(--border-subtle);
+    outline: none;
+    cursor: pointer;
+    margin: 0;
+    padding: 0;
+    display: block;
+}
+
+#asccochi_mouse_trap::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    appearance: none;
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: var(--text-main);
+    transition: transform 0.1s ease;
+}
+
+#asccochi_mouse_trap::-webkit-slider-thumb:hover {
+    transform: scale(1.3);
+}
+
+.rayka-guitar-string {
+    position: absolute;
+    bottom: 40px;
+    right: 45px;
+    width: 380px;
+    height: 76px;
+    border-radius: 20px;
+    z-index: 90;
+    cursor: pointer;
+    overflow: hidden
+}
+
+.rayka-guitar-string.expanded {
+    height: 810px;
+    box-shadow: 0 40px 80px rgba(0, 0, 0, 0.6)
+}
+
+.rayka-violin-bow {
+    position: absolute;
+    top: -7px;
+    left: 0;
+    width: 100%;
+    height: 28px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 50
+}
+
+.rayka-flute-hole {
+    width: 18px;
+    height: 12px;
+    color: var(--glass-specular);
+    transition: all 0.4s
+}
+
+.rayka-guitar-string.expanded .rayka-flute-hole {
+    transform: rotate(180deg)
+}
+
+.rayka-violin-bow:hover .rayka-flute-hole {
+    color: var(--text-muted)
+}
+
+.rayka-trumpet-brass {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    transition: all 0.3s
+}
+
+.rayka-guitar-string.expanded .rayka-trumpet-brass {
+    opacity: 0;
+    pointer-events: none;
+    transform: translateY(-15px)
+}
+
+.rayka-saxophone-reed {
+    width: 45%;
+    height: 100%;
+    position: relative;
+    overflow: hidden;
+    clip-path: polygon(0 0, 100% 0, 82% 100%, 0 100%);
+    -webkit-clip-path: polygon(0 0, 100% 0, 82% 100%, 0 100%)
+}
+
+.rayka-clarinet-mouth {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center
+}
+
+.rayka-harp-pedal {
+    width: 55%;
+    padding: 10px 20px 0 10px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    text-align: left
+}
+
+.rayka-accordion-bellow {
+    font-size: 0.95rem;
+    font-weight: 500;
+    letter-spacing: -0.1px
+}
+
+.rayka-harmonica-comb {
+    font-size: 0.76rem;
+    color: var(--text-subtle);
+    margin-top: 1px
+}
+
+.rayka-banjo-neck {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    padding: 42px 20px 20px 20px;
+    opacity: 0;
+    pointer-events: none;
+    transform: translateY(25px);
+    transition: opacity 0.3s ease 0.1s, transform 0.5s cubic-bezier(0.25, 1, 0.2, 1) 0.05s
+}
+
+.rayka-guitar-string.expanded .rayka-banjo-neck {
+    opacity: 1;
+    pointer-events: auto;
+    transform: translateY(0)
+}
+
+.rayka-ukulele-fret {
+    width: 100%;
+    height: calc(100% - 10px);
+    overflow-y: auto;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    padding-right: 4px
+}
+
+.rayka-ukulele-fret::-webkit-scrollbar {
+    width: 4px
+}
+
+.rayka-ukulele-fret::-webkit-scrollbar-track {
+    background: transparent
+}
+
+.rayka-ukulele-fret::-webkit-scrollbar-thumb {
+    background: rgba(255, 255, 255, 0.15);
+    border-radius: 10px
+}
+
+[data-theme="light"] .rayka-ukulele-fret::-webkit-scrollbar-thumb {
+    background: rgba(15, 23, 42, 0.2)
+}
+
+.rayka-mandolin-bridge {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    text-align: left
+}
+
+.rayka-tambourine-skin {
+    width: 100%;
+    height: 130px;
+    object-fit: cover;
+    border-radius: 12px;
+    margin-bottom: 8px;
+    border: 1px solid rgba(255, 255, 255, 0.04)
+}
+
+.rayka-maracas-handle {
+    font-size: 0.92rem;
+    font-weight: 500;
+    line-height: 1.2;
+    letter-spacing: -0.1px
+}
+
+.rayka-xylophone-bar {
+    font-size: 0.65rem;
+    color: var(--text-subtle);
+    font-weight: 400;
+    margin: 1px 0 6px 0;
+    display: block
+}
+
+.rayka-metallophone-mallet {
+    font-size: 0.75rem;
+    color: var(--text-muted);
+    line-height: 1.45;
+    text-align: justify;
+    display: block;
+    overflow: visible
+}
+
+.rayka-computer-mouse {
+    position: absolute;
+    bottom: 60px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 460px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 8px;
+    z-index: 110;
+    pointer-events: none
+}
+
+.rayka-keyboard-key {
+    width: 100%;
+    height: 9px;
+    background: rgba(0, 0, 0, 0.171);
+    border-radius: 9999px;
+    overflow: hidden;
+    backdrop-filter: blur(8px);
+    box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.2)
+}
+
+#asccochi_monitor_screen {
+    height: 100%;
+    width: 0%;
+    background: linear-gradient(90deg, var(--accent-color), #fff);
+    box-shadow: 0 0 12px var(--accent-color), 0 0 4px #fff;
+    border-radius: 2px;
+    transition: width 0.25s ease-out
+}
+
+.rayka-headphone-mic {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 2px
+}
+
+#asccochi_speaker_volume {
+    font-size: 0.80rem;
+    color: rgba(255, 255, 255, 0.76);
+    font-weight: 500;
+    letter-spacing: 0.8px;
+    text-transform: uppercase;
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.384), 0 1px 1px rgba(0, 0, 0, 0.5)
+}
+
+#asccochi_microphone_mute {
+    font-size: 1rem;
+    color: #fff;
+    font-weight: 600;
+    letter-spacing: -0.2px;
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.8), 0 0 6px var(--accent-glow)
+}
