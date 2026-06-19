@@ -42,7 +42,7 @@ index.html
 
 Watch the video preview here:
 
-VIDEO_LINK
+https://www.youtube.com/watch?v=hAAXLuZPnJQ
 
 ## 💬 Join the Rayka Community
 
